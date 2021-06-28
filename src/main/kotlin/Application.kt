@@ -6,11 +6,10 @@ import kotlinx.coroutines.CoroutineScope
 class Application(val scope: CoroutineScope) {
     private val provider: Provider = Provider.getCurrentProvider(false)
     private val bindingsList = BindingsList()
-    private val bindings = bindingsList.associateBy { it.stroke }
     private lateinit var current: Binding
 
     fun start() {
-        for ((stroke, binding) in bindings) {
+        for ((stroke, binding) in bindingsList.bindings) {
             provider.register(stroke) { handlePress(binding) }
         }
         startBinding(bindingsList.defaultBinding)
