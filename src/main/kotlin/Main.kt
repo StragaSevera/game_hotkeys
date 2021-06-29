@@ -5,7 +5,8 @@ import sun.misc.Signal
 
 
 fun main() = runBlocking {
-    launch(Dispatchers.Default) {
+//    launch(Dispatchers.Default) {
+    launch {
         val app = Application(this)
         app.start()
 
