@@ -6,12 +6,13 @@ import javax.swing.KeyStroke
 
 abstract class Action {
     abstract val keys: List<String>
+
     protected val robot = Robot()
+    private var job: Job? = null
 
-    private lateinit var job: Job
     abstract suspend fun action()
-
     abstract suspend fun finalizer()
+
     fun start(scope: CoroutineScope) {
         job = scope.launch(Dispatchers.IO) {
             action()
@@ -19,11 +20,12 @@ abstract class Action {
     }
 
     fun stop(scope: CoroutineScope) {
-        require(::job.isInitialized)
-        job.cancel()
-        scope.launch(Dispatchers.IO) {
-            finalizer()
-        }
+        job?.let {
+            it.cancel()
+            scope.launch(Dispatchers.IO) {
+                finalizer()
+            }
+        } ?: throw IllegalStateException()
     }
 
     fun getStrokes() = keys.flatMap { listOf(it, "shift $it") }.map { KeyStroke.getKeyStroke(it) }
