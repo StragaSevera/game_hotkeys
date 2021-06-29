@@ -6,6 +6,7 @@ import javax.swing.KeyStroke
 
 abstract class Action {
     abstract val keys: List<String>
+    protected val robot = Robot()
 
     private lateinit var job: Job
     abstract suspend fun action()
