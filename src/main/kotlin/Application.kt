@@ -1,39 +1,39 @@
 import action.Action
-import action.ActionsList
+import action.ActionList
 import com.tulskiy.keymaster.common.Provider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class Application(val scope: CoroutineScope) {
+class Application(private val scope: CoroutineScope) {
     private val provider: Provider = Provider.getCurrentProvider(false)
-    private val bindingsList = ActionsList()
-    private lateinit var current: Action
+    private val actionList = ActionList()
+    private lateinit var currentAction: Action
 
     fun start() {
-        for ((stroke, binding) in bindingsList.bindings) {
-            provider.register(stroke) { scope.launch { handlePress(binding) } }
+        for ((stroke, action) in actionList.bindings) {
+            provider.register(stroke) { scope.launch { handlePress(action) } }
         }
-        startBinding(bindingsList.defaultAction, scope)
+        startBinding(actionList.defaultAction, scope)
     }
 
     fun stop() {
-        current.stop(scope)
+        currentAction.stop(scope)
         provider.reset()
         provider.stop()
     }
 
     private suspend fun handlePress(action: Action) {
         coroutineScope {
-            current.stop(this)
-            delay(510)
+            currentAction.stop(this)
+            delay(currentAction.loopTime + 10)
             startBinding(action, scope)
         }
     }
 
     private fun startBinding(action: Action, scope: CoroutineScope) {
-        current = action
-        current.start(scope)
+        currentAction = action
+        currentAction.start(scope)
     }
 }

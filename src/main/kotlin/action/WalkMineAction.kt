@@ -5,15 +5,14 @@ import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 
 class WalkMineAction : Action() {
-    override val keys: List<String>
-        get() = listOf("NUMPAD2")
+    override val loopTime: Long = 500
+    override val keys = listOf("NUMPAD2")
 
     override suspend fun action() {
         robot.keyPress(KeyEvent.VK_W)
         robot.mousePress(MouseEvent.BUTTON1_DOWN_MASK)
         while (true) {
-            delay(500)
-
+            delay(loopTime)
         }
     }
 

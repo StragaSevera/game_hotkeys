@@ -2,7 +2,7 @@ package action
 
 import javax.swing.KeyStroke
 
-class ActionsList {
+class ActionList {
     val defaultAction = StopAction()
 
     private val actionsList = listOf(

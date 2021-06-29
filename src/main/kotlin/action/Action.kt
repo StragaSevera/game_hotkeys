@@ -5,6 +5,7 @@ import java.awt.Robot
 import javax.swing.KeyStroke
 
 abstract class Action {
+    abstract val loopTime: Long
     abstract val keys: List<String>
 
     protected val robot = Robot()
