@@ -9,17 +9,17 @@ class SlowWalkMineAction : Action() {
         get() = listOf("NUMPAD3")
 
     override suspend fun action() {
-        robot.keyPress(KeyEvent.VK_W)
-        robot.keyPress(KeyEvent.VK_SHIFT)
-        robot.mousePress(MouseEvent.BUTTON1_DOWN_MASK)
+        ActionRobot.keyPress(KeyEvent.VK_W)
+        ActionRobot.keyPress(KeyEvent.VK_SHIFT)
+        ActionRobot.mousePress(MouseEvent.BUTTON1_DOWN_MASK)
         while (true) {
             delay(500)
         }
     }
 
     override suspend fun finalizer() {
-        robot.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK)
-        robot.keyRelease(KeyEvent.VK_W)
-        robot.keyRelease(KeyEvent.VK_SHIFT)
+        ActionRobot.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK)
+        ActionRobot.keyRelease(KeyEvent.VK_W)
+        ActionRobot.keyRelease(KeyEvent.VK_SHIFT)
     }
 }

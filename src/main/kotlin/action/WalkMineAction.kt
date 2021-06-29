@@ -9,8 +9,8 @@ class WalkMineAction : Action() {
         get() = listOf("NUMPAD2")
 
     override suspend fun action() {
-        robot.keyPress(KeyEvent.VK_W)
-        robot.mousePress(MouseEvent.BUTTON1_DOWN_MASK)
+        ActionRobot.keyPress(KeyEvent.VK_W)
+        ActionRobot.mousePress(MouseEvent.BUTTON1_DOWN_MASK)
         while (true) {
             delay(500)
 
@@ -18,7 +18,7 @@ class WalkMineAction : Action() {
     }
 
     override suspend fun finalizer() {
-        robot.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK)
-        robot.keyRelease(KeyEvent.VK_W)
+        ActionRobot.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK)
+        ActionRobot.keyRelease(KeyEvent.VK_W)
     }
 }
