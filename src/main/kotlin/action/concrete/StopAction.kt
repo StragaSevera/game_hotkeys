@@ -1,5 +1,6 @@
-package action
+package action.concrete
 
+import action.Action
 import kotlinx.coroutines.delay
 
 class StopAction : Action() {

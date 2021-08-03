@@ -1,5 +1,6 @@
 package action
 
+import action.concrete.*
 import javax.swing.KeyStroke
 
 class ActionList {
@@ -7,8 +8,11 @@ class ActionList {
 
     private val actionsList = listOf(
         defaultAction,
+        WalkAction(),
         WalkMineAction(),
-        SlowWalkMineAction()
+        SlowWalkMineAction(),
+        LeftHoldAction(),
+        RightHoldAction()
     )
 
     val bindings = mutableMapOf<KeyStroke, Action>().also { bindingsMap ->
