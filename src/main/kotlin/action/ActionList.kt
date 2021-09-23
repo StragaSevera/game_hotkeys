@@ -12,7 +12,10 @@ class ActionList {
         WalkMineAction(),
         SlowWalkMineAction(),
         LeftHoldAction(),
-        RightHoldAction()
+        LeftSpamAction(),
+        LeftSlowSpamAction(),
+        RightHoldAction(),
+        RightSpamAction()
     )
 
     val bindings = mutableMapOf<KeyStroke, Action>().also { bindingsMap ->
