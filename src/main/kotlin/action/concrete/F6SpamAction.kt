@@ -5,18 +5,17 @@ import kotlinx.coroutines.delay
 import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 
-class WalkAction : Action() {
-    override val loopTime: Long = 500
-    override val keys = listOf("ctrl NUMPAD2")
+class F6SpamAction : Action() {
+    override val loopTime: Long = 50
+    override val keys = listOf("ctrl NUMPAD7")
 
     override suspend fun action() {
-        robot.keyPress(KeyEvent.VK_W)
         while (true) {
+            robot.keyPress(KeyEvent.VK_F6)
             delay(loopTime)
+            robot.keyRelease(KeyEvent.VK_F6)
         }
     }
 
-    override suspend fun finalizer() {
-        robot.keyRelease(KeyEvent.VK_W)
-    }
+    override suspend fun finalizer() {}
 }

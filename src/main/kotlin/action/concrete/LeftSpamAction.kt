@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 
 class LeftSpamAction : Action() {
-    override val loopTime: Long = 100
+    override val loopTime: Long = 50
     override val keys = listOf("NUMPAD7")
 
     override suspend fun action() {

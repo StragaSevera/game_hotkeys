@@ -15,7 +15,9 @@ class ActionList {
         LeftSpamAction(),
         LeftSlowSpamAction(),
         RightHoldAction(),
-        RightSpamAction()
+        RightSpamAction(),
+        F6SpamAction(),
+        F6SlowSpamAction()
     )
 
     val bindings = mutableMapOf<KeyStroke, Action>().also { bindingsMap ->
