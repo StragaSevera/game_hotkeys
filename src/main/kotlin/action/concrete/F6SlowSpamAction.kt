@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 
 class F6SlowSpamAction : Action() {
-    override val loopTime: Long = 1000
+    override val loopTime: Long = 500
     override val keys = listOf("ctrl NUMPAD8")
 
     override suspend fun action() {
