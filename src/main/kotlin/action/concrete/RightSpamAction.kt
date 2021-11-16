@@ -2,12 +2,11 @@ package action.concrete
 
 import action.Action
 import kotlinx.coroutines.delay
-import java.awt.event.KeyEvent
 import java.awt.event.MouseEvent
 
 class RightSpamAction : Action() {
     override val loopTime: Long = 100
-    override val keys = listOf("NUMPAD9")
+    override val keys = listOf("ctrl NUMPAD6")
 
     override suspend fun action() {
         while (true) {

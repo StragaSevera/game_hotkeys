@@ -3,7 +3,6 @@ package action.concrete
 import action.Action
 import kotlinx.coroutines.delay
 import java.awt.event.KeyEvent
-import java.awt.event.MouseEvent
 
 class WalkAction : Action() {
     override val loopTime: Long = 500
